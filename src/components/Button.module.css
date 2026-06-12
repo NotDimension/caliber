@@ -1,0 +1,89 @@
+/* ═══════════════════════════════════════════════════════════════════
+ *  Button Component — CSS Module
+ *
+ *  All tokens come from src/styles/variables.css.
+ *  Change a value there → this component updates automatically.
+ * ═══════════════════════════════════════════════════════════════════ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-pill);
+
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-primary);
+  background: var(--color-surface-glass);
+  backdrop-filter: blur(28px) saturate(160%);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+.button:hover {
+  background: var(--color-surface-glass-hover);
+  border-color: var(--color-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* ── Primary variant ── */
+.primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.primary:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow);
+  filter: brightness(0.88);
+}
+
+/* ── Purple variant ── */
+.purple {
+  background: var(--color-accent-2);
+  border-color: var(--color-accent-2);
+  color: #fff;
+}
+
+.purple:hover {
+  background: var(--color-accent-2);
+  border-color: var(--color-accent-2);
+  box-shadow: var(--shadow-glow-2);
+  filter: brightness(0.88);
+}
+
+/* ── Outline variant ── */
+.outline {
+  background: transparent;
+  border-color: var(--color-border-hover);
+  color: var(--color-accent);
+}
+
+.outline:hover {
+  background: var(--color-accent-12);
+  border-color: var(--color-border-active);
+}
+
+/* ── Size modifiers ── */
+.sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+.lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-lg);
+}

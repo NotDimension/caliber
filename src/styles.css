@@ -1,0 +1,128 @@
+/*
+ * ══════════════════════════════════════════════════════════════════════
+ *  Caliber Portfolio — Global Styles
+ *  Single Source of Truth: src/styles/variables.css
+ *  All design tokens live in variables.css — edit ONLY that file to
+ *  change the entire app's look and feel.
+ * ══════════════════════════════════════════════════════════════════════
+ */
+@import url("./styles/variables.css");
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Tailwind Theme Mapping ─── */
+/* Maps CSS variables to Tailwind utility classes. */
+@theme inline {
+  /* Radii (from variables.css) */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-3xl: var(--radius-3xl);
+
+  /* Semantic color mappings */
+  --color-background: var(--color-surface-bg);
+  --color-foreground: var(--color-text-primary);
+  --color-card: var(--color-surface-card);
+  --color-card-foreground: var(--color-text-primary);
+  --color-primary: var(--color-accent);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--color-surface-glass);
+  --color-secondary-foreground: var(--color-text-secondary);
+  --color-muted: var(--color-surface-glass);
+  --color-muted-foreground: var(--color-text-muted);
+  --color-accent: var(--color-accent-2);
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--color-border-default);
+  --color-input: var(--color-border-default);
+  --color-ring: var(--color-accent);
+}
+
+/* ─── Base Layer ─── */
+@layer base {
+  * {
+    border-color: var(--color-border-default);
+  }
+
+  body {
+    background-color: var(--color-surface-bg);
+    color: var(--color-text-primary);
+  }
+}
+
+/* ─── Portfolio Base Styles ─── */
+body {
+  font-family: var(--font-family-body);
+  background: var(--color-surface-bg);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-family-heading); }
+html { scroll-behavior: smooth; }
+
+/* ─── Glass Card ─── */
+.glass-card {
+  position: relative;
+  background: var(--gradient-glass);
+  backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow:
+    var(--shadow-inset-top),
+    var(--shadow-lg);
+  transition: transform var(--transition-smooth),
+              border-color var(--transition-normal),
+              box-shadow var(--transition-smooth);
+}
+.glass-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-glass-border);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity var(--transition-normal);
+  pointer-events: none;
+}
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-border-hover);
+  box-shadow:
+    var(--shadow-inset-top),
+    var(--shadow-glow),
+    0 30px 60px -30px rgba(0, 0, 0, 0.7);
+}
+.glass-card:hover::before { opacity: 1; }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-surface-glass-hover); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-scrollbar-thumb-hover); }
+
+
+/* ─── Animations ─── */
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes pulse-glow {
+  0%,100% { box-shadow: 0 0 20px var(--color-accent-30); }
+  50%      { box-shadow: 0 0 40px var(--color-accent-60), 0 0 80px var(--color-accent-20); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, var(--color-text-primary) 0%, var(--color-accent) 50%, var(--color-text-primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}

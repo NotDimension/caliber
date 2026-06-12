@@ -1,0 +1,231 @@
+/*
+ * ══════════════════════════════════════════════════════════════════════
+ *  DESIGN TOKENS — Single Source of Truth
+ * ══════════════════════════════════════════════════════════════════════
+ *
+ *  Edit ONLY this file to change the entire app's look & feel.
+ *  Every component, gradient, glow, border, and particle reads from
+ *  these variables — one change here propagates everywhere.
+ *
+ *  ── How to change colors ──
+ *  1. Set the solid hex value  (e.g. --color-accent: #22C55E)
+ *  2. Set the matching RGB channels (e.g. --color-accent-rgb: 34, 197, 94)
+ *     The RGB channels are used to build rgba() alpha variants automatically.
+ *  3. Update the surface tints below to match your new hue.
+ *
+ *  ── Adding new tokens ──
+ *  1. Add the variable below under the appropriate category.
+ *  2. Optionally register it in styles.css @theme inline for Tailwind.
+ *  3. Use it in any component: var(--your-new-token)
+ *
+ * ══════════════════════════════════════════════════════════════════════
+ */
+
+/* ─── Color Palette ─── */
+:root {
+
+  /* ── Primary Accent Color ── */
+  /* Change BOTH lines together — hex for solid use, rgb for alpha variants */
+
+  --color-accent: #EF4444;
+  --color-accent-rgb: 239, 68, 68;         /* raw channels → used for rgba() throughout */
+
+
+  /* ── Secondary Accent ── */
+
+  --color-accent-2: #DC2626;
+  --color-accent-2-rgb: 220, 38, 38;
+
+
+  /* ── Platform / Status Colors ── */
+
+  --color-accent-blue: #5865F2;
+  --color-accent-blue-rgb: 88, 101, 242;
+
+  --color-accent-green: #57F287;
+  --color-accent-green-rgb: 87, 242, 135;
+
+
+  /* ── Surface / Background Colors ── */
+  /* Tinted to match the accent hue — adjust these when you change the accent */
+
+  --color-surface-bg: #0D0303;
+  --color-surface-bg-rgb: 13, 3, 3;        /* used in hero overlay & card fades */
+
+  --color-surface-card: rgba(44, 10, 10, 0.55);
+  --color-surface-card-hover: rgba(55, 14, 14, 0.65);
+  --color-surface-glass: rgba(71, 14, 14, 0.5);
+  --color-surface-glass-hover: rgba(71, 14, 14, 0.8);
+
+
+  /* ── Text Colors ── */
+
+  --color-text-primary: #F0E6E6;
+  --color-text-secondary: #D8A8A8;
+  --color-text-muted: #A87F7F;
+  --color-text-subtle: #B89090;
+
+
+  /* ── Border Colors (auto-derived from accent) ── */
+
+  --color-border-default: rgba(71, 14, 14, 0.5);
+  --color-border-hover: rgba(var(--color-accent-rgb), 0.35);
+  --color-border-active: rgba(var(--color-accent-rgb), 0.5);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+
+
+  /* ── Status Colors ── */
+
+  --color-status-online: #57F287;
+
+
+  /* ── Accent Alpha Variants ── */
+  /* Pre-built rgba() shades — all update when you change --color-accent-rgb above */
+
+  --color-accent-12: rgba(var(--color-accent-rgb), 0.12);
+  --color-accent-15: rgba(var(--color-accent-rgb), 0.15);
+  --color-accent-20: rgba(var(--color-accent-rgb), 0.20);
+  --color-accent-22: rgba(var(--color-accent-rgb), 0.22);
+  --color-accent-30: rgba(var(--color-accent-rgb), 0.30);
+  --color-accent-35: rgba(var(--color-accent-rgb), 0.35);
+  --color-accent-45: rgba(var(--color-accent-rgb), 0.45);
+  --color-accent-50: rgba(var(--color-accent-rgb), 0.50);
+  --color-accent-60: rgba(var(--color-accent-rgb), 0.60);
+
+  --color-accent-2-15: rgba(var(--color-accent-2-rgb), 0.15);
+  --color-accent-2-20: rgba(var(--color-accent-2-rgb), 0.20);
+
+  --color-surface-bg-05: rgba(var(--color-surface-bg-rgb), 0.05);
+  --color-surface-bg-55: rgba(var(--color-surface-bg-rgb), 0.55);
+  --color-surface-bg-85: rgba(var(--color-surface-bg-rgb), 0.85);
+  --color-surface-bg-95: rgba(var(--color-surface-bg-rgb), 0.95);
+
+
+  /* ── Gradient Presets (all reference accent vars — change accent, gradients follow) ── */
+
+  --gradient-brand:        linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
+  --gradient-glass:        linear-gradient(140deg, rgba(44, 10, 10, 0.55), rgba(24, 5, 5, 0.45));
+  --gradient-glass-border: linear-gradient(135deg, var(--color-accent-35), var(--color-accent-2-15), transparent 60%);
+
+  /* Hero section overlay — fades the bg image into the page background color */
+  --gradient-hero-overlay: linear-gradient(
+    180deg,
+    var(--color-surface-bg-55) 0%,
+    var(--color-surface-bg-55) 45%,
+    var(--color-surface-bg-95) 90%,
+    var(--color-surface-bg)    100%
+  );
+
+  /* Card banner fade (Discord / venture cards) */
+  --gradient-card-fade: linear-gradient(
+    180deg,
+    var(--color-surface-bg-05) 0%,
+    var(--color-surface-bg-85) 100%
+  );
+
+  /* Avatar fallback background */
+  --gradient-avatar-fallback: linear-gradient(135deg, rgba(71, 14, 14, 1), rgba(46, 8, 8, 1));
+
+  /* Divider lines */
+  --gradient-divider: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+
+
+  /* ── Shadows & Glows (all reference accent vars) ── */
+
+  --shadow-sm:        0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md:        0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg:        0 12px 40px -20px rgba(0, 0, 0, 0.6);
+  --shadow-xl:        0 20px 60px -20px rgba(0, 0, 0, 0.7);
+  --shadow-inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  --shadow-glow:      0 0 40px var(--color-accent-22);
+  --shadow-glow-sm:   0 0 20px var(--color-accent-30);
+  --shadow-glow-lg:   0 0 40px var(--color-accent-50);
+  --shadow-glow-2:    0 0 30px var(--color-accent-2-20);
+  --shadow-glow-green: 0 0 8px var(--color-status-online);
+
+  /* Scrollbar accent */
+  --color-scrollbar-thumb-hover: var(--color-accent-60);
+
+
+  /* ─── Typography ─── */
+
+  --font-family-body:    'Inter', system-ui, sans-serif;
+  --font-family-heading: 'Space Grotesk', system-ui, sans-serif;
+  --font-family-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Font sizes (fluid scale) */
+  --font-size-xs:   0.625rem;   /* 10px */
+  --font-size-sm:   0.75rem;    /* 12px */
+  --font-size-base: 0.875rem;   /* 14px */
+  --font-size-md:   1rem;       /* 16px */
+  --font-size-lg:   1.125rem;   /* 18px */
+  --font-size-xl:   1.25rem;    /* 20px */
+  --font-size-2xl:  1.5rem;     /* 24px */
+  --font-size-3xl:  1.875rem;   /* 30px */
+  --font-size-4xl:  2.25rem;    /* 36px */
+  --font-size-5xl:  3rem;       /* 48px */
+
+  /* Font weights */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+  --font-weight-black:    900;
+
+  /* Line heights */
+  --line-height-tight:   1.2;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.7;
+
+  /* Letter spacing */
+  --letter-spacing-tight:  -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide:   0.05em;
+  --letter-spacing-wider:  0.3em;
+
+
+  /* ─── Spacing ─── */
+
+  --space-1:  0.25rem;  /* 4px */
+  --space-2:  0.5rem;   /* 8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.25rem;  /* 20px */
+  --space-6:  1.5rem;   /* 24px */
+  --space-8:  2rem;     /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
+
+
+  /* ─── Border Radius ─── */
+
+  --radius-sm:   0.375rem;  /* 6px */
+  --radius-md:   0.5rem;    /* 8px */
+  --radius-lg:   0.75rem;   /* 12px */
+  --radius-xl:   1rem;      /* 16px */
+  --radius-2xl:  1.5rem;    /* 24px */
+  --radius-3xl:  1.875rem;  /* 30px */
+  --radius-pill: 9999px;    /* Fully rounded pill */
+
+
+  /* ─── Transitions ─── */
+
+  --transition-fast:   0.2s ease;
+  --transition-normal: 0.35s ease;
+  --transition-smooth: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+
+  /* ─── Z-index scale ─── */
+
+  --z-base:     1;
+  --z-dropdown: 10;
+  --z-sticky:   20;
+  --z-overlay:  30;
+  --z-modal:    40;
+  --z-toast:    50;
+}
