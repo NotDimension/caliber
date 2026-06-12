@@ -1,22 +1,22 @@
 /*
  * ══════════════════════════════════════════════════════════════════════
- *  DESIGN TOKENS — Single Source of Truth
+ * DESIGN TOKENS — Single Source of Truth
  * ══════════════════════════════════════════════════════════════════════
  *
- *  Edit ONLY this file to change the entire app's look & feel.
- *  Every component, gradient, glow, border, and particle reads from
- *  these variables — one change here propagates everywhere.
+ * Edit ONLY this file to change the entire app's look & feel.
+ * Every component, gradient, glow, border, and particle reads from
+ * these variables — one change here propagates everywhere.
  *
- *  ── How to change colors ──
- *  1. Set the solid hex value  (e.g. --color-accent: #22C55E)
- *  2. Set the matching RGB channels (e.g. --color-accent-rgb: 34, 197, 94)
- *     The RGB channels are used to build rgba() alpha variants automatically.
- *  3. Update the surface tints below to match your new hue.
+ * ── How to change colors ──
+ * 1. Set the solid hex value  (e.g. --color-accent: #22C55E)
+ * 2. Set the matching RGB channels (e.g. --color-accent-rgb: 34, 197, 94)
+ * The RGB channels are used to build rgba() alpha variants automatically.
+ * 3. Update the surface tints below to match your new hue.
  *
- *  ── Adding new tokens ──
- *  1. Add the variable below under the appropriate category.
- *  2. Optionally register it in styles.css @theme inline for Tailwind.
- *  3. Use it in any component: var(--your-new-token)
+ * ── Adding new tokens ──
+ * 1. Add the variable below under the appropriate category.
+ * 2. Optionally register it in styles.css @theme inline for Tailwind.
+ * 3. Use it in any component: var(--your-new-token)
  *
  * ══════════════════════════════════════════════════════════════════════
  */
@@ -27,14 +27,14 @@
   /* ── Primary Accent Color ── */
   /* Change BOTH lines together — hex for solid use, rgb for alpha variants */
 
-  --color-accent: #EF4444;
-  --color-accent-rgb: 239, 68, 68;         /* raw channels → used for rgba() throughout */
+  --color-accent: #A404E1;
+  --color-accent-rgb: 164, 4, 225;         /* raw channels → used for rgba() throughout */
 
 
   /* ── Secondary Accent ── */
 
-  --color-accent-2: #DC2626;
-  --color-accent-2-rgb: 220, 38, 38;
+  --color-accent-2: #8503B6;
+  --color-accent-2-rgb: 133, 3, 182;
 
 
   /* ── Platform / Status Colors ── */
@@ -49,26 +49,26 @@
   /* ── Surface / Background Colors ── */
   /* Tinted to match the accent hue — adjust these when you change the accent */
 
-  --color-surface-bg: #0D0303;
-  --color-surface-bg-rgb: 13, 3, 3;        /* used in hero overlay & card fades */
+  --color-surface-bg: #0E0016;
+  --color-surface-bg-rgb: 14, 0, 22;        /* used in hero overlay & card fades */
 
-  --color-surface-card: rgba(44, 10, 10, 0.55);
-  --color-surface-card-hover: rgba(55, 14, 14, 0.65);
-  --color-surface-glass: rgba(71, 14, 14, 0.5);
-  --color-surface-glass-hover: rgba(71, 14, 14, 0.8);
+  --color-surface-card: rgba(40, 1, 55, 0.55);
+  --color-surface-card-hover: rgba(53, 2, 73, 0.65);
+  --color-surface-glass: rgba(40, 1, 55, 0.5);
+  --color-surface-glass-hover: rgba(40, 1, 55, 0.8);
 
 
   /* ── Text Colors ── */
 
-  --color-text-primary: #F0E6E6;
-  --color-text-secondary: #D8A8A8;
-  --color-text-muted: #A87F7F;
-  --color-text-subtle: #B89090;
+  --color-text-primary: #F2EBF5;
+  --color-text-secondary: #D3BED9;
+  --color-text-muted: #A48FA8;
+  --color-text-subtle: #B9A4BF;
 
 
   /* ── Border Colors (auto-derived from accent) ── */
 
-  --color-border-default: rgba(71, 14, 14, 0.5);
+  --color-border-default: rgba(40, 1, 55, 0.5);
   --color-border-hover: rgba(var(--color-accent-rgb), 0.35);
   --color-border-active: rgba(var(--color-accent-rgb), 0.5);
   --color-border-subtle: rgba(255, 255, 255, 0.08);
@@ -104,7 +104,7 @@
   /* ── Gradient Presets (all reference accent vars — change accent, gradients follow) ── */
 
   --gradient-brand:        linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-2) 100%);
-  --gradient-glass:        linear-gradient(140deg, rgba(44, 10, 10, 0.55), rgba(24, 5, 5, 0.45));
+  --gradient-glass:        linear-gradient(140deg, rgba(40, 1, 55, 0.55), rgba(20, 0, 30, 0.45));
   --gradient-glass-border: linear-gradient(135deg, var(--color-accent-35), var(--color-accent-2-15), transparent 60%);
 
   /* Hero section overlay — fades the bg image into the page background color */
@@ -124,7 +124,7 @@
   );
 
   /* Avatar fallback background */
-  --gradient-avatar-fallback: linear-gradient(135deg, rgba(71, 14, 14, 1), rgba(46, 8, 8, 1));
+  --gradient-avatar-fallback: linear-gradient(135deg, rgba(40, 1, 55, 1), rgba(25, 0, 36, 1));
 
   /* Divider lines */
   --gradient-divider: linear-gradient(90deg, transparent, var(--color-accent), transparent);
